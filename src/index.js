@@ -11,11 +11,16 @@ const Pet = require("./resources/pets/model");
 /* IMPORT ROUTERS */
 
 const app = express();
+const booksRouter = require("./resources/books/router")
+const petsRouter = require("./resources/pets/router")
 
 /* SETUP MIDDLEWARE */
 
 app.use(morgan("dev"));
 app.use(bodyParser.json());
+
+app.use("/books", booksRouter)
+app.use("/pets", petsRouter)
 
 /* SETUP ROUTES */
 
@@ -36,8 +41,8 @@ app.listen(port, () => {
     } else {
       console.log("\n[DB] Connected...\n");
 
-      // Book();
-      // Pet();
+      Book();
+      Pet();
     }
   });
 
