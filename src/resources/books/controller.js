@@ -18,4 +18,16 @@ function createOne(req, res) {
         .catch(console.error)
 }
 
-module.exports = {createOne}
+function getAll(req, res) {
+    const getAll = `
+    SELECT *
+    FROM books
+    `
+    console.log("here")
+
+    db.query(getAll)
+        .then((result) => res.json({data: result.rows}))
+        .catch(console.error)
+}
+
+module.exports = {createOne, getAll}
